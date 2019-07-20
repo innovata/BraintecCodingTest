@@ -1,0 +1,13 @@
+{% extends "contact/base.html" %}
+
+{% block title %}
+   ErrorPage
+{% endblock %}
+
+{% block body %}
+   <h1>Error Message</h1>
+   {{ message }}
+
+   <hr>
+   <a href="{% url 'index' %}">Return to Home.</a>
+{% endblock %}

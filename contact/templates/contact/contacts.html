@@ -1,0 +1,17 @@
+{% extends "contact/base.html" %}
+
+{% block title %}
+   Braintec Test
+{% endblock %}
+
+{% block body %}
+   <h1>Contacts Results</h1>
+   List :
+   <ul>
+      {% for contact in contacts %}
+         <li>{{ contact }}</li>
+      {% empty %}
+         <li>No contacts</li>
+      {% endfor %}
+   </ul>
+{% endblock %}
