@@ -4,12 +4,12 @@
 ## Installation.
 
 
-1. Download the package.
+1. Download the package using git-CLI or Web-browser.
 
-   - git https://github.com/innovata/braintec.git
+   1.1. Using Git
+   - git clone https://github.com/innovata/braintec.git
 
-   Or,
-
+   1.2. Using Web
    - Download ZIP file and unpacked it on your local computer. (https://github.com/innovata/braintec)
 
 2. Move into the package-folder and Make a virtualenv of Python3.7
@@ -18,6 +18,8 @@
 
 3. Install required packages.
 
+   Move to python virtualenv.
+   - project_name $ source env/bin/activate
    - pip install -r requirements.txt
 
 4. Install PostgreSQL(v11).
@@ -29,50 +31,35 @@
 1. Run PostgreSQL server using App or Terminal.
 
    1.1. Using App
+   - https://postgresapp.com (For MacOSX)
+   - You can find other ways for your machine. (https://www.postgresql.org/download/)
 
    1.2. Using Terminal
 
-   - (env) project_name $ psql
+   Connect to PostgreSQL Shell.
+   - project_name $ psql
    - psql_username=# CREATE DATABASE exercise;
+   Check out if exercise DATABASE is created.
    - psql_username=# \l
 
 
 ## Django Setup.
 
-1. Creating the Admin.
-
-   1.1. Make admin migration.
-   - $ python manage.py migrate
-
-   1.2. register admin account info following the instruction.
-   - $ python manage.py createsuperuser
-   - Username: admin_name
-   - Email address: admin_email
-   - Password: admin_password
-
-   1.3. Check out if admin can login.
-
-   1.3.1. Run the server.
-   - $ python manage.py runserver
-
-   1.3.2. Open a browser and access to "localhost:8000/admin/"
-
-   1.3.3. Login using admin_name, admin_password
-
-
-2. Setup Terminal Environment
+1. Setup Terminal Environment
 
    - export PSQL_USER=user_name
    - export PSQL_PW=user_password
    - export DEBUG_ON=True (Optional)
 
-3. Setup PostgreSQL Table(Contact)
+2. Setup PostgreSQL Table(Contact)
 
    - $ python manage.py makemigrations contact
    - $ python manage.py sqlmigrate contact 0001
    - $ python manage.py migrate
+   Check out if "contact-contact" table is created.
+   - psql_username=# \dt
 
-4. Run Django Server
+3. Run Django Server
 
    - $ python manage.py runserver
 

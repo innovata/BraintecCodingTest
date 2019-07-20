@@ -9,39 +9,41 @@
    <h2>Add a new contact manually.</h2>
    <form action="{% url 'add' %}" method="post">
       {% csrf_token %}
-      <ul>
-         <li>
-            <input type="text" name="firstname" placeholder="First name">
-         </li>
-         <li>
-            <input type="text" name="lastname" placeholder="Surname">
-         </li>
-         <li>
-            <input type="text" name="email" placeholder="Email">
-         </li>
-         <li>
-            <input type="text" name="address" placeholder="Address (Optional)">
-         </li>
-         <li>
-            <input type="text" name="phone" placeholder="Telephone number (Optional)">
-         </li>
-      </ul>
-      <button type="submit">Send</button>
+      <div class="add">
+         <ul>
+            <li>
+               <input type="text" name="firstname" placeholder="First name">
+            </li>
+            <li>
+               <input type="text" name="lastname" placeholder="Surname">
+            </li>
+            <li>
+               <input type="text" name="email" placeholder="Email">
+            </li>
+            <li>
+               <input type="text" name="address" placeholder="Address (Optional)">
+            </li>
+            <li>
+               <input type="text" name="phone" placeholder="Telephone number (Optional)">
+            </li>
+         </ul>
+      </div>
+      <div class="button">
+         <button type="submit" name="submit" value="submit">Send</button>
+      </div>
    </form>
    <h2>Add a new contact by uploading XML.</h2>
-   <div class="form">
-      <form action="{% url 'xmlapi' %}" method="post" enctype="multipart/form-data">
-         {% csrf_token %}
-         <div class="title">
-            <input type="text" name="title" placeholder="File name (Optional)">
-         </div>
-         <div class="">
-            <input type="file" name="file" value="file">
-         </div>
-      </form>
-   </div>
-   <div class="button">
-      <button type="submit" name="submit" value="submit">Send</button>
-   </div>
+   <form action="{% url 'xmlapi' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="title">
+         <input type="text" name="title" placeholder="File name (Optional)">
+      </div>
+      <div class="upload">
+         <input type="file" name="file" value="file">
+      </div>
+      <div class="button">
+         <button type="submit" name="submit" value="submit">Send</button>
+      </div>
+   </form>
 
 {% endblock %}
