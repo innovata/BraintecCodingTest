@@ -6,19 +6,19 @@
 
 1. Download the package.
 
-- git https://github.com/innovata/braintec.git
+   - git https://github.com/innovata/braintec.git
 
-Or,
+   Or,
 
-- Download ZIP file and unpacked it on your local computer. (https://github.com/innovata/braintec)
+   - Download ZIP file and unpacked it on your local computer. (https://github.com/innovata/braintec)
 
 2. Move into the package-folder and Make a virtualenv of Python3.7
 
-- python3 -m virtualenv env
+   - python3 -m virtualenv env
 
 3. Install required packages.
 
-- pip install -r requirements.txt
+   - pip install -r requirements.txt
 
 4. Install PostgreSQL(v11).
 
