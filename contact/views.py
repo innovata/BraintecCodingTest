@@ -1,29 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.urls import reverse
-from contact import dbg
 from contact.models import Contact
 from contact.forms import ContactForm, UploadFileForm
 from contact.xml import handle_uploaded_xml
 import inspect
 
+
 # Create your views here.
 
 def index(request):
-    # return HttpResponse('Contact Book')
     return render(request, "contact/index.html")
 
 def find(request, surname, name):
-    # print(f"{'='*50} {__name__}\nsurname : {surname}\nname : {name}")
     contacts = Contact.objects.all().filter(lastname=surname, firstname=name)
-    # print(type(contacts))
-    # for p in contacts:
-    #     print(p)
     context = {'contacts':contacts}
     return render(request, 'contact/contacts.html', context)
 
 def data_errmsg(f):
-    # print(f"{'='*50} {__name__}\nf.errors : {f.errors}")
     err_msg = f"""
         These fileds are compulsory :
         First name, Surname, Email.
@@ -37,10 +30,8 @@ def check_saved(lastname, firstname, email):
     return {'contacts':contacts}
 
 def add(request):
-    # print(f"request.POST :\n{request.POST}")
     f = ContactForm(request.POST)
     if f.is_valid():
-        # print(f"f.cleaned_data : {f.cleaned_data}")
         try:
             c = Contact()
             c.lastname = f.cleaned_data['lastname']
@@ -55,11 +46,9 @@ def add(request):
         else:
             context = check_saved(c.lastname, c.firstname, c.email)
             return render(request, 'contact/contacts.html', context)
-            # return HttpResponse('Add suceeded.')
     else:
         err_msg = data_errmsg(f)
         return HttpResponse(err_msg)
-        # return render(request, 'contact/errmsg.html', {'message':err_msg})
 
 def xmlapi(request):
     def xml_errmsg(f):
@@ -84,7 +73,6 @@ def xmlapi(request):
             else:
                 err_msg = xml_errmsg(f)
                 return HttpResponse(err_msg)
-                # return render(request, 'contact/errmsg.html', {'message':err_msg})
         else:
             err_msg = xml_errmsg(f)
             return HttpResponse(err_msg)
